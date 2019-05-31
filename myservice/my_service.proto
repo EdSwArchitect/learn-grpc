@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.bscllc.myservice";
+option java_outer_classname = "MyServiceProto";
+
+package myservice;
+
+// Interface exported by the server.
+service MyService {
+    rpc GetIndices(EServer) returns (Result) {}
+
+    
+
+}
+
+message EServer {
+    string server = 1;
+}
+
+message Result {
+    int32 code = 1;
+    string data = 2;
+}
