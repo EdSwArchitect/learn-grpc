@@ -45,7 +45,7 @@ func main() {
 	defer cancel()
 
 	result, err := client.GetIndices(ctx, &pb.EServer{
-		Server: "sabrina.imac",
+		Server: "localhost",
 	})
 
 	if err != nil {
@@ -54,5 +54,45 @@ func main() {
 	}
 
 	fmt.Printf("The result is: %s\n", result.Data)
+
+	myHostName := "localhost"
+
+	queryResult, err := client.QueryIndex(ctx, &pb.Query{
+		Query:  "New",
+		Server: myHostName,
+		Start:  0,
+		Size:   100,
+		Index:  "mybrooklyn",
+		Term:   "events",
+	})
+
+	if err != nil {
+		fmt.Println("Well, that client call for index failed")
+		log.Panic(err)
+	}
+
+	fmt.Printf("The query result code: %d\n", queryResult.Code)
+	fmt.Printf("The query result size: %d\n", queryResult.Size)
+	fmt.Println(queryResult.Results)
+
+	queryResult, err = client.QueryIndex(ctx, &pb.Query{
+		Query:  "Brooklyn",
+		Server: myHostName,
+		Start:  0,
+		Size:   30,
+		Index:  "nyc-air-quality",
+		Term:   "geo_entity_name",
+	})
+
+	if err != nil {
+		fmt.Println("Well, that client call for index failed")
+		log.Panic(err)
+	}
+
+	fmt.Printf("The query result code: %d\n", queryResult.Code)
+	fmt.Printf("The query result size: %d\n", queryResult.Size)
+	fmt.Println(queryResult.Results)
+
+	// fmt.Printf("The query result: %+v\n", queryResult)
 
 }

@@ -110,27 +110,170 @@ func (m *Result) GetData() string {
 	return ""
 }
 
+type Query struct {
+	Server               string   `protobuf:"bytes,1,opt,name=server,proto3" json:"server,omitempty"`
+	Query                string   `protobuf:"bytes,2,opt,name=query,proto3" json:"query,omitempty"`
+	Index                string   `protobuf:"bytes,3,opt,name=index,proto3" json:"index,omitempty"`
+	Term                 string   `protobuf:"bytes,4,opt,name=term,proto3" json:"term,omitempty"`
+	Start                int32    `protobuf:"varint,5,opt,name=start,proto3" json:"start,omitempty"`
+	Size                 int32    `protobuf:"varint,6,opt,name=size,proto3" json:"size,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Query) Reset()         { *m = Query{} }
+func (m *Query) String() string { return proto.CompactTextString(m) }
+func (*Query) ProtoMessage()    {}
+func (*Query) Descriptor() ([]byte, []int) {
+	return fileDescriptor_a845ab241122eea0, []int{2}
+}
+
+func (m *Query) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Query.Unmarshal(m, b)
+}
+func (m *Query) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Query.Marshal(b, m, deterministic)
+}
+func (m *Query) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Query.Merge(m, src)
+}
+func (m *Query) XXX_Size() int {
+	return xxx_messageInfo_Query.Size(m)
+}
+func (m *Query) XXX_DiscardUnknown() {
+	xxx_messageInfo_Query.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Query proto.InternalMessageInfo
+
+func (m *Query) GetServer() string {
+	if m != nil {
+		return m.Server
+	}
+	return ""
+}
+
+func (m *Query) GetQuery() string {
+	if m != nil {
+		return m.Query
+	}
+	return ""
+}
+
+func (m *Query) GetIndex() string {
+	if m != nil {
+		return m.Index
+	}
+	return ""
+}
+
+func (m *Query) GetTerm() string {
+	if m != nil {
+		return m.Term
+	}
+	return ""
+}
+
+func (m *Query) GetStart() int32 {
+	if m != nil {
+		return m.Start
+	}
+	return 0
+}
+
+func (m *Query) GetSize() int32 {
+	if m != nil {
+		return m.Size
+	}
+	return 0
+}
+
+type QueryResult struct {
+	Code                 int32    `protobuf:"varint,1,opt,name=code,proto3" json:"code,omitempty"`
+	Size                 int32    `protobuf:"varint,2,opt,name=size,proto3" json:"size,omitempty"`
+	Results              string   `protobuf:"bytes,3,opt,name=results,proto3" json:"results,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *QueryResult) Reset()         { *m = QueryResult{} }
+func (m *QueryResult) String() string { return proto.CompactTextString(m) }
+func (*QueryResult) ProtoMessage()    {}
+func (*QueryResult) Descriptor() ([]byte, []int) {
+	return fileDescriptor_a845ab241122eea0, []int{3}
+}
+
+func (m *QueryResult) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_QueryResult.Unmarshal(m, b)
+}
+func (m *QueryResult) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_QueryResult.Marshal(b, m, deterministic)
+}
+func (m *QueryResult) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryResult.Merge(m, src)
+}
+func (m *QueryResult) XXX_Size() int {
+	return xxx_messageInfo_QueryResult.Size(m)
+}
+func (m *QueryResult) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryResult.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryResult proto.InternalMessageInfo
+
+func (m *QueryResult) GetCode() int32 {
+	if m != nil {
+		return m.Code
+	}
+	return 0
+}
+
+func (m *QueryResult) GetSize() int32 {
+	if m != nil {
+		return m.Size
+	}
+	return 0
+}
+
+func (m *QueryResult) GetResults() string {
+	if m != nil {
+		return m.Results
+	}
+	return ""
+}
+
 func init() {
 	proto.RegisterType((*EServer)(nil), "myservice.EServer")
 	proto.RegisterType((*Result)(nil), "myservice.Result")
+	proto.RegisterType((*Query)(nil), "myservice.Query")
+	proto.RegisterType((*QueryResult)(nil), "myservice.QueryResult")
 }
 
 func init() { proto.RegisterFile("my_service.proto", fileDescriptor_a845ab241122eea0) }
 
 var fileDescriptor_a845ab241122eea0 = []byte{
-	// 180 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0xc8, 0xad, 0x8c, 0x2f,
-	0x4e, 0x2d, 0x2a, 0xcb, 0x4c, 0x4e, 0xd5, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0xe2, 0xcc, 0xad,
-	0x84, 0x0a, 0x28, 0x29, 0x72, 0xb1, 0xbb, 0x06, 0xa7, 0x16, 0x95, 0xa5, 0x16, 0x09, 0x89, 0x71,
-	0xb1, 0x15, 0x83, 0x59, 0x12, 0x8c, 0x0a, 0x8c, 0x1a, 0x9c, 0x41, 0x50, 0x9e, 0x92, 0x01, 0x17,
-	0x5b, 0x50, 0x6a, 0x71, 0x69, 0x4e, 0x89, 0x90, 0x10, 0x17, 0x4b, 0x72, 0x7e, 0x4a, 0x2a, 0x58,
-	0x9e, 0x35, 0x08, 0xcc, 0x06, 0x89, 0xa5, 0x24, 0x96, 0x24, 0x4a, 0x30, 0x81, 0xf5, 0x80, 0xd9,
-	0x46, 0x4e, 0x5c, 0x9c, 0xbe, 0x95, 0xc1, 0x10, 0x1b, 0x84, 0x4c, 0xb9, 0xb8, 0xdc, 0x53, 0x4b,
-	0x3c, 0xf3, 0x52, 0x32, 0x93, 0x53, 0x8b, 0x85, 0x84, 0xf4, 0xe0, 0x76, 0xeb, 0x41, 0x2d, 0x96,
-	0x12, 0x44, 0x12, 0x83, 0xd8, 0xa4, 0xc4, 0xe0, 0xa4, 0xc1, 0x25, 0x92, 0x9c, 0x9f, 0xab, 0x97,
-	0x54, 0x9c, 0x9c, 0x93, 0x93, 0x8c, 0x50, 0xe0, 0xc4, 0x07, 0x37, 0x39, 0x00, 0xe4, 0x97, 0x00,
-	0xc6, 0x24, 0x36, 0xb0, 0xa7, 0x8c, 0x01, 0x01, 0x00, 0x00, 0xff, 0xff, 0x0a, 0xdb, 0x78, 0xd6,
-	0xe8, 0x00, 0x00, 0x00,
+	// 302 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x52, 0x4d, 0x4b, 0xc3, 0x40,
+	0x10, 0x35, 0xb5, 0x49, 0xc9, 0x08, 0x52, 0x97, 0x52, 0x96, 0x9e, 0x34, 0xa7, 0x9e, 0x82, 0xf8,
+	0x01, 0x9e, 0x0b, 0x52, 0x7a, 0x10, 0x6b, 0xf2, 0x03, 0x24, 0xdd, 0xcc, 0x21, 0x90, 0x34, 0xba,
+	0x3b, 0x29, 0xc6, 0x7f, 0xe0, 0xdf, 0xf1, 0x17, 0xca, 0xce, 0xa6, 0x1f, 0x08, 0x0a, 0xbd, 0xbd,
+	0xf7, 0xf2, 0x5e, 0xf6, 0xcd, 0x30, 0x30, 0xac, 0xda, 0x57, 0x83, 0x7a, 0x53, 0x28, 0x8c, 0xdf,
+	0x74, 0x4d, 0xb5, 0x08, 0xab, 0xb6, 0x13, 0xa2, 0x2b, 0x18, 0x3c, 0xa6, 0xa8, 0x37, 0xa8, 0xc5,
+	0x18, 0x02, 0xc3, 0x48, 0x7a, 0x97, 0xde, 0x34, 0x4c, 0x3a, 0x16, 0x5d, 0x43, 0x90, 0xa0, 0x69,
+	0x4a, 0x12, 0x02, 0xfa, 0xaa, 0xce, 0x91, 0xbf, 0xfb, 0x09, 0x63, 0xab, 0xe5, 0x19, 0x65, 0xb2,
+	0xc7, 0x19, 0xc6, 0xd1, 0x97, 0x07, 0xfe, 0x4b, 0x83, 0xba, 0xfd, 0xeb, 0x9f, 0x62, 0x04, 0xfe,
+	0xbb, 0x35, 0x74, 0x31, 0x47, 0xac, 0x5a, 0xac, 0x73, 0xfc, 0x90, 0xa7, 0x4e, 0x65, 0x62, 0x5f,
+	0x20, 0xd4, 0x95, 0xec, 0xbb, 0x17, 0x2c, 0xb6, 0x4e, 0x43, 0x99, 0x26, 0xe9, 0x73, 0x15, 0x47,
+	0xac, 0xd3, 0x14, 0x9f, 0x28, 0x03, 0xd7, 0xcf, 0xe2, 0xe8, 0x19, 0xce, 0xb8, 0xca, 0xff, 0x23,
+	0x70, 0xac, 0xb7, 0x8f, 0x09, 0x09, 0x03, 0xcd, 0x09, 0xd3, 0x95, 0xd9, 0xd2, 0x9b, 0x6f, 0x0f,
+	0xc2, 0xa7, 0x36, 0x75, 0xfb, 0x13, 0xf7, 0x00, 0x73, 0xa4, 0xc5, 0x3a, 0x2f, 0x14, 0x1a, 0x21,
+	0xe2, 0xdd, 0x66, 0xe3, 0x6e, 0xad, 0x93, 0x8b, 0x03, 0xcd, 0x95, 0x88, 0x4e, 0xc4, 0x1d, 0x84,
+	0x73, 0xa4, 0x94, 0x32, 0x6a, 0x8e, 0x48, 0x3d, 0x00, 0xf0, 0x2c, 0x0b, 0xde, 0xcb, 0xf0, 0xc0,
+	0xc2, 0xf2, 0x64, 0xfc, 0x5b, 0xd9, 0x26, 0x67, 0x53, 0x18, 0xa9, 0xba, 0x8a, 0x57, 0x46, 0x95,
+	0xa5, 0xda, 0xbb, 0x66, 0xe7, 0xbb, 0x49, 0x96, 0xf6, 0x32, 0x96, 0xde, 0x2a, 0xe0, 0x13, 0xb9,
+	0xfd, 0x09, 0x00, 0x00, 0xff, 0xff, 0x95, 0x5c, 0x4b, 0x13, 0x36, 0x02, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -146,6 +289,8 @@ const _ = grpc.SupportPackageIsVersion4
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type MyServiceClient interface {
 	GetIndices(ctx context.Context, in *EServer, opts ...grpc.CallOption) (*Result, error)
+	GetStatus(ctx context.Context, in *EServer, opts ...grpc.CallOption) (*Result, error)
+	QueryIndex(ctx context.Context, in *Query, opts ...grpc.CallOption) (*QueryResult, error)
 }
 
 type myServiceClient struct {
@@ -165,9 +310,29 @@ func (c *myServiceClient) GetIndices(ctx context.Context, in *EServer, opts ...g
 	return out, nil
 }
 
+func (c *myServiceClient) GetStatus(ctx context.Context, in *EServer, opts ...grpc.CallOption) (*Result, error) {
+	out := new(Result)
+	err := c.cc.Invoke(ctx, "/myservice.MyService/GetStatus", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *myServiceClient) QueryIndex(ctx context.Context, in *Query, opts ...grpc.CallOption) (*QueryResult, error) {
+	out := new(QueryResult)
+	err := c.cc.Invoke(ctx, "/myservice.MyService/QueryIndex", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MyServiceServer is the server API for MyService service.
 type MyServiceServer interface {
 	GetIndices(context.Context, *EServer) (*Result, error)
+	GetStatus(context.Context, *EServer) (*Result, error)
+	QueryIndex(context.Context, *Query) (*QueryResult, error)
 }
 
 // UnimplementedMyServiceServer can be embedded to have forward compatible implementations.
@@ -176,6 +341,12 @@ type UnimplementedMyServiceServer struct {
 
 func (*UnimplementedMyServiceServer) GetIndices(ctx context.Context, req *EServer) (*Result, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetIndices not implemented")
+}
+func (*UnimplementedMyServiceServer) GetStatus(ctx context.Context, req *EServer) (*Result, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetStatus not implemented")
+}
+func (*UnimplementedMyServiceServer) QueryIndex(ctx context.Context, req *Query) (*QueryResult, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method QueryIndex not implemented")
 }
 
 func RegisterMyServiceServer(s *grpc.Server, srv MyServiceServer) {
@@ -200,6 +371,42 @@ func _MyService_GetIndices_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
+func _MyService_GetStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EServer)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MyServiceServer).GetStatus(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/myservice.MyService/GetStatus",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MyServiceServer).GetStatus(ctx, req.(*EServer))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _MyService_QueryIndex_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Query)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MyServiceServer).QueryIndex(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/myservice.MyService/QueryIndex",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MyServiceServer).QueryIndex(ctx, req.(*Query))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _MyService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "myservice.MyService",
 	HandlerType: (*MyServiceServer)(nil),
@@ -207,6 +414,14 @@ var _MyService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetIndices",
 			Handler:    _MyService_GetIndices_Handler,
+		},
+		{
+			MethodName: "GetStatus",
+			Handler:    _MyService_GetStatus_Handler,
+		},
+		{
+			MethodName: "QueryIndex",
+			Handler:    _MyService_QueryIndex_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

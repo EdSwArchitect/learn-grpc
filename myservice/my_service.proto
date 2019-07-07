@@ -10,7 +10,9 @@ package myservice;
 service MyService {
     rpc GetIndices(EServer) returns (Result) {}
 
-    
+    rpc GetStatus(EServer) returns (Result) {}
+
+    rpc QueryIndex(Query) returns (QueryResult) {}
 
 }
 
@@ -21,4 +23,18 @@ message EServer {
 message Result {
     int32 code = 1;
     string data = 2;
+}
+
+message Query {
+    string server = 1;
+    string query = 2;
+    string index = 3;
+    string term = 4;
+    int32 start = 5;
+    int32 size = 6;
+}
+message QueryResult {
+    int32 code = 1;
+    int32 size = 2;
+    string results = 3;
 }
